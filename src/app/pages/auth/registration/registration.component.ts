@@ -15,6 +15,7 @@ export class RegistrationComponent implements OnInit {
   email: string;
   cardNumber: string;
   localStorage: boolean = false;
+  isSave: boolean = false;
 
   constructor(private messageService: MessageService,
               private authService: AuthService) { }
@@ -41,8 +42,8 @@ export class RegistrationComponent implements OnInit {
       this.messageService.add({severity:'warn', summary: 'Пользователь с этим логином уже существует'});
       return;
     }
-    this.authService.setUser(userObj);
-    this.messageService.add({severity:'success', summary: 'Вы зарегистрировались'});
+    this.authService.setUser(userObj, this.isSave);
+    this.messageService.add({severity:'success', summary: 'Вы успешно зарегистрировались'});
     if(this.localStorage){
       localStorage.setItem(userObj.login, JSON.stringify(userObj));
     }

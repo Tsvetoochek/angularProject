@@ -26,7 +26,12 @@ export class AuthService {
     return false;
   }
 
-  setUser(user: IUser): void {
+  setUser(user: IUser, saveToLocalStorage: boolean = false): void {
+
+    if (saveToLocalStorage) {
+      window.localStorage.setItem("user_"+user.login, JSON.stringify(user));
+    }
+
     const isUserExists = this.usersStorage.find((el: IUser) => el.login === user.login);
     if (!isUserExists && user?.login){
       this.usersStorage.push(user);
