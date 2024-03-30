@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { IUser } from "../../models/users";
+import {IUser, USER_STORE_NAME} from "../../models/users";
 
 @Injectable({
   providedIn: 'root'
@@ -11,7 +11,7 @@ export class AuthService {
 
   checkUser(user: IUser):boolean {
     const isUserExists = this.usersStorage.find((el: IUser) => el.login === user.login);
-    let isUserSavedInStore = window.localStorage.getItem("user_"+user?.login)
+    let isUserSavedInStore = window.localStorage.getItem(USER_STORE_NAME);
     let userInStore: IUser = <IUser>{};
 
     if (isUserSavedInStore) {

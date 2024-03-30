@@ -4,4 +4,5 @@ export interface ITour {
   tourOperator: string;
   price: number;
   img: string;
+  id: string;
 }

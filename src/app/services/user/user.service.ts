@@ -5,16 +5,19 @@ import { IUser } from "../../models/users";
   providedIn: 'root'
 })
 export class UserService {
-
+  private userKey = 'currentUser';
   private user: IUser;
 
-  constructor() {}
+  constructor() {
+    this.user = JSON.parse(localStorage.getItem(this.userKey) || '{}') as IUser;
+  }
 
   getUser(): IUser {
     return this.user;
   };
   setUser(user: IUser) {
     this.user = user;
+    localStorage.setItem(this.userKey, JSON.stringify(user));
   };
 
 }

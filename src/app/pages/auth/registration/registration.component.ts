@@ -1,4 +1,4 @@
-import {IUser} from "../../../models/users";
+import {IUser, USER_STORE_NAME} from "../../../models/users";
 import {AuthService} from "../../../services/auth/auth.service";
 import {Component, OnInit} from "@angular/core";
 import {MessageService} from "primeng/api";
@@ -45,7 +45,7 @@ export class RegistrationComponent implements OnInit {
     this.authService.setUser(userObj, this.isSave);
     this.messageService.add({severity:'success', summary: 'Вы успешно зарегистрировались'});
     if(this.localStorage){
-      localStorage.setItem(userObj.login, JSON.stringify(userObj));
+      localStorage.setItem(USER_STORE_NAME, JSON.stringify(userObj));
     }
   }
 

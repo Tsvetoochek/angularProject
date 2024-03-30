@@ -1,4 +1,18 @@
-<div>
-  <p-menubar [model]="items"></p-menubar>
+<div class="d-flex">
 
+  <div class="flex-grow-1">
+    <p-menubar [model]="items">
+    <ng-template pTemplate="start">
+    <div class="user-info mx-5" *ngIf="user">
+         <span>{{ user.login }}</span>
+    </div>
+    </ng-template>
+    </p-menubar>
+  </div>
+
+  <div class="time-block mx-4">
+    <div>{{time | date: 'HH:mm:ss'}}</div>
+    <p class="timer-day p-0 m-0">{{time | date: 'EEEE'}}</p>
+  </div>
 </div>
+

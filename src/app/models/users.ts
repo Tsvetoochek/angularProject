@@ -4,3 +4,4 @@ export interface IUser {
   psw: string;
   cardNumber?: string;
 }
+export const USER_STORE_NAME = 'user';

@@ -10,7 +10,7 @@ export class TicketService {
 
   constructor(private ticketServiceRest: TicketRestService) { }
 
-  getTickets(): Observable<ITour[]> {
-    return this.ticketServiceRest.getTickets();
+  getTickets(filter: string = ''): Observable<ITour[]> {
+    return this.ticketServiceRest.getTickets(filter);
   }
 }
