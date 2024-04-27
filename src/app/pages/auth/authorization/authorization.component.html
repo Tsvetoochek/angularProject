@@ -22,7 +22,7 @@
     <p-checkbox (onChange)="vipStatusSelected()" class="mt-3" label="Я постоянный клиент" name="vip" [binary]="true" [(ngModel)]="selectedValue"></p-checkbox>
   </div>
 
-  <div *ngIf="selectedValue">
+  <div *ngIf="showCardNumber">
     <span class="mx-3">Номер карты</span>
     <input type="text" class="mt-3" pInputText [(ngModel)]="cardNumber">
   </div>

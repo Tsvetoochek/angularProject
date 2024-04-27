@@ -1,3 +1,4 @@
+import { ConfigServiceService } from "src/app/services/config/config-service.service";
 import {IUser, USER_STORE_NAME} from "../../../models/users";
 import {AuthService} from "../../../services/auth/auth.service";
 import {Component, OnInit} from "@angular/core";
@@ -16,11 +17,14 @@ export class RegistrationComponent implements OnInit {
   cardNumber: string;
   localStorage: boolean = false;
   isSave: boolean = false;
+  showCardNumber: boolean;
 
   constructor(private messageService: MessageService,
-              private authService: AuthService) { }
+              private authService: AuthService,
+              private config: ConfigServiceService) { }
 
   ngOnInit(): void {
+    this.showCardNumber = ConfigServiceService.config.useUserCard;
   }
 
   localStorageChecked(checked: boolean){

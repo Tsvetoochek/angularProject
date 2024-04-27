@@ -12,8 +12,9 @@ export class BlockStyleDirective implements OnInit, AfterViewInit, OnChanges{
   @Input() initFirst: boolean = false;
   @Output() renderComplete = new EventEmitter();
   private items: HTMLElement[];
+  private curElem: Element | null;
   private index: number = 0;
-  constructor(private el: ElementRef) {
+  constructor( private el: ElementRef) {
 
   }
   ngOnInit():void {
@@ -21,6 +22,7 @@ export class BlockStyleDirective implements OnInit, AfterViewInit, OnChanges{
 
   ngAfterViewInit() {
     if (this.selector) {
+      this.curElem = this.el.nativeElement.querySelector(this.selector);
       this.items = this.el.nativeElement.querySelectorAll(this.selector);
       if (this.initFirst) {
         if (this.items[0]) {
@@ -53,6 +55,10 @@ export class BlockStyleDirective implements OnInit, AfterViewInit, OnChanges{
 
     if (ev.key === 'ArrowRight') {
       this.index++;
+      if (this.curElem) {
+        this.curElem = this.curElem.nextElementSibling;
+      }
+
     } else if (ev.key === 'ArrowLeft') {
       this.index--;
     }
@@ -74,5 +80,16 @@ export class BlockStyleDirective implements OnInit, AfterViewInit, OnChanges{
       this.index = index;
     }
   }
+  updateElements(): void {
+    setTimeout(() => {
+      this.items = this.el.nativeElement.querySelectorAll(this.selector);
+      if (this.items[0]) {
+        (this.items[0] as HTMLElement).setAttribute('style', 'border: 2px solid blue');
+      }
+    })
+  }
 
+  updateItems(): void {
+    this.items = this.el.nativeElement.querySelectorAll(this.selector);
+  }
 }

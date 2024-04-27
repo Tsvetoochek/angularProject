@@ -11,9 +11,10 @@ export class TicketsStorageService {
   constructor() { }
 
   setStorage(data: ITour[]): void {
+    console.log('xxx', data)
     this.ticketStorage = data;
   }
   getStorage(): ITour[] {
-    return this.ticketStorage;
+    return this.ticketStorage || [];
   }
 }

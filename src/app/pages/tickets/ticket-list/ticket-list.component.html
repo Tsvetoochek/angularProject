@@ -1,6 +1,7 @@
-<div *ngIf="tickets">
+<div>
+<ng-container *ngIf="tickets.length > 0">
   <div>
-    <p>Количество туров: {{ tourWrap.childElementCount }}</p>
+    <p>Количество туров: {{ tickets.length }}</p>
     <p>Активный элемент: {{ blockDirective.getActiveElement() }}</p>
     <input type="text" placeholder="Отфильровать Туры" #filter>
     <button class="primary" type="button" (click)="filterTickets(filter.value)">Поиск</button>
@@ -16,4 +17,5 @@
       </div>
     </div>
   </div>
+</ng-container>
 </div>

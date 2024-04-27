@@ -1,1 +1,29 @@
-<p>settings works!</p>
+ <div class="col-lg-6 col-sm-12">
+   <p-tabView>
+   <p-tabPanel header="Смена пароля">
+    <app-change-password></app-change-password>
+   </p-tabPanel>  
+   <p-tabPanel header="Статистика">
+       <ng-template pTemplate="content">
+      <app-statistic></app-statistic>
+      </ng-template> 
+   </p-tabPanel>
+   <p-tabPanel header="Список пользователей">
+      <ng-template pTemplate="content">
+     <app-users></app-users>
+     </ng-template> 
+  </p-tabPanel>
+   </p-tabView>
+ </div>
+
+ <!-- <p-toast position="top-left"></p-toast> -->
+    
+    
+
+
+
+<p-tabPanel header="Стастика">
+   <ng-template pTemplate="content">
+         <app-statistic></app-statistic>
+   </ng-template>
+</p-tabPanel>

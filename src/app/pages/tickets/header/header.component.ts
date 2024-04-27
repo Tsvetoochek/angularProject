@@ -1,8 +1,9 @@
-import {Component, Input, OnInit, OnDestroy, OnChanges, SimpleChanges} from '@angular/core';
+import {Component, Input, OnInit, OnDestroy, OnChanges, SimpleChanges, ElementRef} from '@angular/core';
 import {MenuItem} from "primeng/api";
 import { IUser } from "../../../models/users";
 import {UserService} from "../../../services/user/user.service";
 import {IMenuType} from "../../../models/menuType";
+import { AuthService } from 'src/app/services/auth/auth.service';
 
 @Component({
   selector: 'app-header',
@@ -11,12 +12,16 @@ import {IMenuType} from "../../../models/menuType";
 })
 export class HeaderComponent implements OnInit, OnDestroy, OnChanges{
   items: MenuItem[];
-  user: IUser;
+  user: IUser | null;
   time: Date;
   private timerInterval: number;
   private settingsActive = false;
   @Input() menuType: IMenuType;
-  constructor(private userService: UserService) { }
+  public btn: any;
+  constructor(private userService: UserService,
+              private AuthService: AuthService,
+              private el: ElementRef
+  ) { }
 
   ngOnInit(): void {
     this.user = this.userService.getUser();
@@ -35,7 +40,10 @@ export class HeaderComponent implements OnInit, OnDestroy, OnChanges{
   ngOnChanges(ev: SimpleChanges): void {
     this.settingsActive = this.menuType?.type === "extended";
     this.items = this.initMenuItems();
+
+
   }
+
 
 
   initMenuItems(): MenuItem[] {
@@ -47,11 +55,15 @@ export class HeaderComponent implements OnInit, OnDestroy, OnChanges{
       {
         label: 'Настройки',
         routerLink: ['/settings'],
-        visible: this.settingsActive
+        // visible: this.settingsActive
+       },
+       {
+        label: 'Заказы',
+        routerLink:['orders'],
        },
       {
         label: 'Выйти',
-        routerLink: ['/auth']
+        routerLink: ['/auth'],
       },
     ];
   }

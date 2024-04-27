@@ -2,7 +2,34 @@ export interface ITour {
   name: string;
   description: string;
   tourOperator: string;
-  price: number;
+  price: string;
   img: string;
   id: string;
+  type?: string;
+  date?: string;
+  // createdAt?: string;
+  // avatar?: string;
+  // firstName?: string;
+  // lastName?: string;
+  // cardNumber?: string;
+  // birthDate?: string;
+  // age?: number;
+
 }
+
+
+export interface ITourTypeSelect {
+  label?: string,
+  value?: string,
+  date?: string
+}
+
+export interface INearestTour extends ITour {
+  locationId: string;
+}
+
+export interface ITourLocation {
+  name: string;
+  id: string;
+}
+
