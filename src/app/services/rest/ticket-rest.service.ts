@@ -30,7 +30,7 @@ export class TicketRestService {
     return this.http.get<ITourLocation[]>('https://62b9e756ff109cd1dc9dae16.mockapi.io/apiv/v1/location/');
   }
 
-  sendTourData(data: any) {
+  sendTourData(data: any): Observable<any> {
     return this.http.post('/assets/', data);
   }
 }

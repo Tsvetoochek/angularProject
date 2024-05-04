@@ -5,6 +5,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Subject } from 'rxjs';
 import { tap, filter, takeUntil } from 'rxjs/operators';
 
+
 @Component({
   selector: 'app-tickets',
   templateUrl: './tickets.component.html',
@@ -15,10 +16,14 @@ export class TicketsComponent implements OnInit {
   showAside = true;
   destroyer = new Subject();
   dataProp = 'asideHidden';
-  constructor(private router: Router, private route: ActivatedRoute) { }
-  updateSelectedType(ev: IMenuType): void {
-    this.selectedType = ev;
+  constructor(private router: Router, private route: ActivatedRoute,) { }
+
+  getSelectedType(): IMenuType {
+    return this.getSelectedType();
   }
+   updateSelectedType(ev: IMenuType): void {
+     this.selectedType = ev;
+   }
 
   ngOnInit(): void {
 

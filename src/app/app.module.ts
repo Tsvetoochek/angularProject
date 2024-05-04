@@ -19,7 +19,6 @@ export function initializeApp(config: ConfigServiceService) {
 @NgModule({
   declarations: [
     AppComponent,
-    
 
   ],
   imports: [

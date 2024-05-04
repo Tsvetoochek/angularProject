@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "ticketSales2022": {
+    "ticketSales2024": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
@@ -76,10 +76,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "ticketSales2022:build:production"
+              "browserTarget": "ticketSales2024:build:production"
             },
             "development": {
-              "browserTarget": "ticketSales2022:build:development"
+              "browserTarget": "ticketSales2024:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -87,7 +87,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "ticketSales2022:build"
+            "browserTarget": "ticketSales2024:build"
           }
         },
         "test": {

@@ -5,7 +5,7 @@ import {ActivatedRoute, Router} from "@angular/router";
 import {TicketsStorageService} from "../../../services/tiсkets-storage/tickets-storage.service";
 import {BlockStyleDirective} from "../../../directive/block-style.directive";
 import { Subscription } from 'rxjs';
-import { ITourTypeSelect } from '../../../models/tours';
+import { ITourTypeSelect, INearestTour, INearestTourWithCountry, ITourLocation } from '../../../models/tours';
 
 @Component({
   selector: 'app-ticket-list',
@@ -13,7 +13,7 @@ import { ITourTypeSelect } from '../../../models/tours';
   styleUrls: ['./ticket-list.component.scss']
 })
 export class TicketListComponent implements OnInit {
-
+  nearestToursWithCountry: INearestTourWithCountry[];
   private tourUnsubscriber: Subscription;
   tickets: ITour[] = [];
   ticketsCopy: ITour[];
@@ -88,6 +88,7 @@ export class TicketListComponent implements OnInit {
   }
 
   ngAfterViewInit() {
+    
   }
 
   goToTicketInfoPage(item: ITour) {

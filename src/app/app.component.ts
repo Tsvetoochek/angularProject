@@ -13,12 +13,14 @@ export class AppComponent implements OnInit {
   testing: ObservableExampleService;
 
   constructor(testing: ObservableExampleService,
-              private configService: ConfigServiceService
+              private configService: ConfigServiceService,
+              
   ) {
     this.testing = testing;
   }
 
   ngOnInit(): void {
+    
     this.configService.loadPromise();
     const myObservable = this.testing.getObservable();
     myObservable.subscribe((data: string) => {

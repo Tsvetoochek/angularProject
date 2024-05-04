@@ -50,16 +50,16 @@ export class HeaderComponent implements OnInit, OnDestroy, OnChanges{
     return [
       {
         label: 'Билеты',
-        routerLink: ['ticketList']
+        routerLink: ['/tickets']
       },
       {
         label: 'Настройки',
-        routerLink: ['/settings'],
+        routerLink: ['/tickets/settings'],
         // visible: this.settingsActive
        },
        {
         label: 'Заказы',
-        routerLink:['orders'],
+        routerLink:['/tickets/orders'],
        },
       {
         label: 'Выйти',

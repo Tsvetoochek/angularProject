@@ -16,15 +16,24 @@ const routes: Routes = [
         path: 'ticket/:id',
         loadChildren: () => import('../ticket-info/ticket-info.module').then(m => m.TicketInfoModule)
       },
-      {
-        path: 'settings',
-        component: SettingsComponent,
-        data: {asideHidden: true}
-      },
       // {
-      //   path: 'orders',
-      //   loadChildren: () => import('../')
-      // }
+      //   path: 'settings',
+      //   component: SettingsComponent,
+      //   data: {asideHidden: true}
+      // },
+     {
+      path: 'settings',
+      loadChildren: () => import('../settings/settings.module').then(m => m.SettingsModule)
+    },
+  
+    {
+      path: 'orders',
+      loadChildren: () => import('../orders/orders.module').then(m => m.OrdersModule)
+    },
+    { 
+      path: '**',
+      component: TicketListComponent
+   },
       ]
   },
 ];

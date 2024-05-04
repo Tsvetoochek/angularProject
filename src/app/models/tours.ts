@@ -7,14 +7,9 @@ export interface ITour {
   id: string;
   type?: string;
   date?: string;
-  // createdAt?: string;
-  // avatar?: string;
-  // firstName?: string;
-  // lastName?: string;
-  // cardNumber?: string;
-  // birthDate?: string;
-  // age?: number;
-
+  country?: string;
+  createdAt?: string;
+  avatar?: string;
 }
 
 
@@ -31,5 +26,11 @@ export interface INearestTour extends ITour {
 export interface ITourLocation {
   name: string;
   id: string;
+  country: string;
+}
+
+export  interface INearestTourWithCountry extends INearestTour {
+  country: string;
+  
 }
 

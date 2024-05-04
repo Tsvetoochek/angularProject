@@ -1,5 +1,5 @@
 import { AfterViewInit, Component, OnInit } from '@angular/core';
-import { INearestTour, ITour, ITourLocation } from '../../../models/tours';
+import { INearestTour, ITour, ITourLocation, INearestTourWithCountry } from '../../../models/tours';
 import { IUser } from 'src/app/models/users';
 import { ActivatedRoute } from '@angular/router';
 import { TicketsStorageService } from '../../../services/tiсkets-storage/tickets-storage.service';
@@ -17,9 +17,10 @@ export class TicketItemComponent implements OnInit, AfterViewInit {
   ticket: ITour | undefined;
   user: IUser;
   userForm: FormGroup;
-  item: any;
+  // item: any;
   nearestTours: INearestTour[];
   toursLocation: ITourLocation[];
+  // nearestToursWithCountry: INearestTourWithCountry[]; 
 
   constructor(
     private route: ActivatedRoute,
@@ -32,11 +33,9 @@ export class TicketItemComponent implements OnInit, AfterViewInit {
     this.user = this.userService.getUser();
 
     this.userForm = new FormGroup({
-      firstName: new FormControl('aa', { validators: Validators.required }),
-      lastName: new FormControl('', [
-        Validators.required,
-        Validators.minLength(2),
-      ]),
+      firstName: new FormControl('', {validators: Validators.required }),
+      lastName: new FormControl('', 
+      [Validators.required, Validators.minLength(2),]),
       cardNumber: new FormControl(),
       birthDay: new FormControl(''),
       age: new FormControl(),
@@ -69,7 +68,7 @@ export class TicketItemComponent implements OnInit, AfterViewInit {
     const postData = {...this.ticket, ...userData};
     // console.log('postData', postData)
     // console.log('this.userForm.getRawValue()', this.userForm.getRawValue())
-    this.ticketService.sendTourData(postData).subscribe()
+     this.ticketService.sendTourData(postData).subscribe()
   }
   
   selectDate(ev: Event): void {}
